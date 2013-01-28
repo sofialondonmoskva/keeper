@@ -12,7 +12,7 @@ Every 2 seconds the app gets current active window, if it is safari/chrome it ge
 ### report page
 
 the report page looks like this:
-![screen shot](https://github.com/sofialondonmoskva.com/keeper/raw/master/screen.png "screen shot")
+![screen shot](https://raw.github.com/sofialondonmoskva/keeper/master/screen.png "screen shot")
 
 if you set productivity to -3 it will ignore the application and will appear at the ignor list (bottom right corner)
 
