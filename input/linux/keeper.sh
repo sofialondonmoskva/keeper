@@ -1,6 +1,6 @@
 #!/bin/bash
 KEEPER_UID=keeper.uid
-AGGREGATE=1
+AGGREGATE=300
 INTERVAL=1
 URL=https://keeper.sofialondonmoskva.com
 declare -A DATA
