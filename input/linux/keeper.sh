@@ -31,7 +31,9 @@ while :; do
         fi
         key=$(cat /proc/$(xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d ' ' -f 5) _NET_WM_PID | cut -f 3 -d ' ')/comm | tr '[A-Z]' '[a-z]')
 	#key=$(cat /proc/$(xdotool getwindowpid $(xdotool getwindowfocus))/comm | tr '[A-Z]' '[a-z]')
-        test ${DATA[$key]+_} || DATA[$key]=0
-        DATA[$key]=$((${DATA[$key]} + $INTERVAL))
+        if [ ${#key} -gt 1]; then
+                test ${DATA[$key]+_} || DATA[$key]=0
+                DATA[$key]=$((${DATA[$key]} + $INTERVAL))
+        fi
         sleep $INTERVAL
 done
