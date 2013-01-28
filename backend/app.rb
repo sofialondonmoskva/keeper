@@ -157,18 +157,18 @@ class App < Sinatra::Base
 
     @stamps = Hash.new(0)
     person = 0.0
+    robot = 0.0
     @activity = 0
     Sample.find(:all,
              select: "samples.*, applications.productivity as ap",
               joins: :application,
          conditions: { application_id: @applications.map { |x| x.id }, stamp: @from..@to},
               order: :stamp).each do |s|
-      
+      robot += MAX_PRODUCTIVITY
       person += s.ap
       @stamps[s.stamp] += s.ap
       @activity += s.seconds
     end
-    robot = @stamps.keys.count * MAX_PRODUCTIVITY
     @productivity = ((person/robot) * 100.0).round rescue 0.0
     
     erb :report
