@@ -107,9 +107,9 @@ class App < Sinatra::Base
 
     error 400 if throttle(request.ip,input.keys.count) 
     begin
-      Application.transaction do
+      Sample.transaction do
         input.each do |k,v|
-          app = Application.where(name: k.to_s.escape, user_id: user.id).first_or_create!
+          app = Application.lock.where(name: k.to_s.escape, user_id: user.id).first_or_create!
           s = Sample.where(application_id: app.id, stamp: stamp).first_or_initialize
           s.seconds ||= 0
           s.seconds += v.to_i
