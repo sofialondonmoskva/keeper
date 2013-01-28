@@ -7,7 +7,14 @@ Every 2 seconds the app gets current active window, if it is safari/chrome it ge
 
 ### install - client
 
-* MacOSX (>=1.6): download from [keeper.zip](https://github.com/downloads/sofialondonmoskva/keeper/keeper.zip) and just start it, or open input/macos/keeper/keeper.xcodeproj and compile it, click on the status icon (that looks like a K inside a clock) and select `Productivity report` and enjoy.
+* MacOSX (>=1.6): download from [keeper-binary-macos-10.6.zip](https://github.com/sofialondonmoskva/keeper/raw/master/input/macos/keeper/keeper-binary-macos-10.6.zip) and just start it, or open input/macos/keeper/keeper.xcodeproj and compile it, click on the status icon (that looks like a K inside a clock) and select `Productivity report` and enjoy.
+
+### report page
+
+the report page looks like this:
+![screen shot](https://github.com/sofialondonmoskva.com/keeper/raw/master/screen.png "screen shot")
+
+if you set productivity to -3 it will ignore the application and will appear at the ignor list (bottom right corner)
 
 #### install - backend (or use the default one which runs on https://keeper.sofialondonmoskva.com)
 
