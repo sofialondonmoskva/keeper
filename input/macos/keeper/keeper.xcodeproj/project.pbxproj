@@ -1,0 +1,332 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		040999E716B421C900F1A458 /* icons.icns in Resources */ = {isa = PBXBuildFile; fileRef = 040999E616B421C900F1A458 /* icons.icns */; };
+		040999EF16B4232F00F1A458 /* keeper_running.png in Resources */ = {isa = PBXBuildFile; fileRef = 040999ED16B4232F00F1A458 /* keeper_running.png */; };
+		040999F016B4232F00F1A458 /* keeper_stopped.png in Resources */ = {isa = PBXBuildFile; fileRef = 040999EE16B4232F00F1A458 /* keeper_stopped.png */; };
+		04802C5E16B1DCF4009D3825 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04802C5D16B1DCF4009D3825 /* Cocoa.framework */; };
+		04802C6816B1DCF4009D3825 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04802C6616B1DCF4009D3825 /* InfoPlist.strings */; };
+		04802C6A16B1DCF4009D3825 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04802C6916B1DCF4009D3825 /* main.m */; };
+		04802C6E16B1DCF4009D3825 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 04802C6C16B1DCF4009D3825 /* Credits.rtf */; };
+		04802C7116B1DCF4009D3825 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04802C7016B1DCF4009D3825 /* AppDelegate.m */; };
+		04802C7416B1DCF4009D3825 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04802C7216B1DCF4009D3825 /* MainMenu.xib */; };
+		04802C8716B414BE009D3825 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04802C8616B414BE009D3825 /* Carbon.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		040999E616B421C900F1A458 /* icons.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icons.icns; sourceTree = "<group>"; };
+		040999ED16B4232F00F1A458 /* keeper_running.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keeper_running.png; sourceTree = "<group>"; };
+		040999EE16B4232F00F1A458 /* keeper_stopped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keeper_stopped.png; sourceTree = "<group>"; };
+		04802C5916B1DCF4009D3825 /* keeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = keeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04802C5D16B1DCF4009D3825 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		04802C6016B1DCF4009D3825 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		04802C6116B1DCF4009D3825 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		04802C6216B1DCF4009D3825 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		04802C6516B1DCF4009D3825 /* keeper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "keeper-Info.plist"; sourceTree = "<group>"; };
+		04802C6716B1DCF4009D3825 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		04802C6916B1DCF4009D3825 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		04802C6B16B1DCF4009D3825 /* keeper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "keeper-Prefix.pch"; sourceTree = "<group>"; };
+		04802C6D16B1DCF4009D3825 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		04802C7016B1DCF4009D3825 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		04802C7316B1DCF4009D3825 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		04802C8616B414BE009D3825 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		04EA405F16B50287000E48A0 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04802C5616B1DCF4009D3825 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04802C8716B414BE009D3825 /* Carbon.framework in Frameworks */,
+				04802C5E16B1DCF4009D3825 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04802C4E16B1DCF4009D3825 = {
+			isa = PBXGroup;
+			children = (
+				04802C6316B1DCF4009D3825 /* keeper */,
+				04802C5C16B1DCF4009D3825 /* Frameworks */,
+				04802C5A16B1DCF4009D3825 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		04802C5A16B1DCF4009D3825 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04802C5916B1DCF4009D3825 /* keeper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04802C5C16B1DCF4009D3825 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04802C8616B414BE009D3825 /* Carbon.framework */,
+				04802C5D16B1DCF4009D3825 /* Cocoa.framework */,
+				04802C5F16B1DCF4009D3825 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		04802C5F16B1DCF4009D3825 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04802C6016B1DCF4009D3825 /* AppKit.framework */,
+				04802C6116B1DCF4009D3825 /* CoreData.framework */,
+				04802C6216B1DCF4009D3825 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		04802C6316B1DCF4009D3825 /* keeper */ = {
+			isa = PBXGroup;
+			children = (
+				04EA405D16B5026C000E48A0 /* icons */,
+				04802C7016B1DCF4009D3825 /* AppDelegate.m */,
+				04EA405F16B50287000E48A0 /* AppDelegate.h */,
+				04802C7216B1DCF4009D3825 /* MainMenu.xib */,
+				04802C6416B1DCF4009D3825 /* Supporting Files */,
+			);
+			path = keeper;
+			sourceTree = "<group>";
+		};
+		04802C6416B1DCF4009D3825 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				04802C6516B1DCF4009D3825 /* keeper-Info.plist */,
+				04802C6616B1DCF4009D3825 /* InfoPlist.strings */,
+				04802C6916B1DCF4009D3825 /* main.m */,
+				04802C6B16B1DCF4009D3825 /* keeper-Prefix.pch */,
+				04802C6C16B1DCF4009D3825 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04EA405D16B5026C000E48A0 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				040999E616B421C900F1A458 /* icons.icns */,
+				040999ED16B4232F00F1A458 /* keeper_running.png */,
+				040999EE16B4232F00F1A458 /* keeper_stopped.png */,
+			);
+			name = icons;
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04802C5816B1DCF4009D3825 /* keeper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04802C7716B1DCF4009D3825 /* Build configuration list for PBXNativeTarget "keeper" */;
+			buildPhases = (
+				04802C5516B1DCF4009D3825 /* Sources */,
+				04802C5616B1DCF4009D3825 /* Frameworks */,
+				04802C5716B1DCF4009D3825 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = keeper;
+			productName = keeper;
+			productReference = 04802C5916B1DCF4009D3825 /* keeper.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04802C5016B1DCF4009D3825 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = jazz;
+			};
+			buildConfigurationList = 04802C5316B1DCF4009D3825 /* Build configuration list for PBXProject "keeper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 04802C4E16B1DCF4009D3825;
+			productRefGroup = 04802C5A16B1DCF4009D3825 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				04802C5816B1DCF4009D3825 /* keeper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04802C5716B1DCF4009D3825 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04802C6816B1DCF4009D3825 /* InfoPlist.strings in Resources */,
+				04802C6E16B1DCF4009D3825 /* Credits.rtf in Resources */,
+				04802C7416B1DCF4009D3825 /* MainMenu.xib in Resources */,
+				040999E716B421C900F1A458 /* icons.icns in Resources */,
+				040999EF16B4232F00F1A458 /* keeper_running.png in Resources */,
+				040999F016B4232F00F1A458 /* keeper_stopped.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04802C5516B1DCF4009D3825 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04802C6A16B1DCF4009D3825 /* main.m in Sources */,
+				04802C7116B1DCF4009D3825 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		04802C6616B1DCF4009D3825 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04802C6716B1DCF4009D3825 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		04802C6C16B1DCF4009D3825 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04802C6D16B1DCF4009D3825 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		04802C7216B1DCF4009D3825 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04802C7316B1DCF4009D3825 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		04802C7516B1DCF4009D3825 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		04802C7616B1DCF4009D3825 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		04802C7816B1DCF4009D3825 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "keeper/keeper-Prefix.pch";
+				INFOPLIST_FILE = "keeper/keeper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		04802C7916B1DCF4009D3825 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "keeper/keeper-Prefix.pch";
+				INFOPLIST_FILE = "keeper/keeper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04802C5316B1DCF4009D3825 /* Build configuration list for PBXProject "keeper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04802C7516B1DCF4009D3825 /* Debug */,
+				04802C7616B1DCF4009D3825 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04802C7716B1DCF4009D3825 /* Build configuration list for PBXNativeTarget "keeper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04802C7816B1DCF4009D3825 /* Debug */,
+				04802C7916B1DCF4009D3825 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 04802C5016B1DCF4009D3825 /* Project object */;
+}
