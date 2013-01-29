@@ -93,8 +93,8 @@ end
 class App < Sinatra::Base
   set :sessions, false
   set :logging, !PRODUCTION
-  set :dump_errors, false
-  set :show_exceptions, false
+  set :dump_errors, !PRODUCTION
+  set :show_exceptions, !PRODUCTION
   set :static, false
 
   error 404 do
