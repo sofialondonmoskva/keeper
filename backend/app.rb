@@ -20,6 +20,7 @@ UID_LEN = 128
 UID_RE = "[a-zA-Z0-9]{#{UID_LEN}}"
 MAX_REQUESTS_PER_DAY = 1000
 THROTTLE = {}
+
 def humanize(secs)
   [[60, :s], [60, :m], [24, :h], [1000, :d]].inject([]){ |s, (count, name)|
     if secs > 0
@@ -30,11 +31,18 @@ def humanize(secs)
   }.join(' ')
 end
 
+def throttle(ip, input = 1)
+  key = "#{ip}_#{Time.now.to_i / 1.day}"
+  THROTTLE[key] ||= 0
+  THROTTLE[key] += input
+  return THROTTLE[key] > MAX_REQUESTS_PER_DAY
+end
+
 class Fixnum
   def ms
     self * 1000
   end
-  def ms_to_s
+  def ms_to_sec
     self > 1000 ? self/1000 : 1
   end
 end
@@ -76,13 +84,6 @@ class Sample < ActiveRecord::Base
   belongs_to :application
   attr_accessible :seconds,:stamp, :application_id
   validates :application, presence: true
-end
-
-def throttle(ip, input = 1)
-  key = "#{ip}_#{Time.now.to_i / 1.day}"
-  THROTTLE[key] ||= 0
-  THROTTLE[key] += input
-  return THROTTLE[key] > MAX_REQUESTS_PER_DAY
 end
 
 class App < Sinatra::Base
@@ -128,8 +129,8 @@ class App < Sinatra::Base
   get %r{/(#{UID_RE})/report/} do |uid|
     @user = User.find_by_uid(uid) or error 404
 
-    @from = (params[:from].to_i > 0 ? params[:from].to_i : Time.now.utc.beginning_of_day.to_i.ms).ms_to_s
-    @to = (params[:to].to_i > 0 ? params[:to].to_i :  Time.now.utc.end_of_day.to_i.ms).ms_to_s
+    @from = (params[:from].to_i > 0 ? params[:from].to_i : Time.now.utc.beginning_of_day.to_i.ms).ms_to_sec
+    @to = (params[:to].to_i > 0 ? params[:to].to_i :  Time.now.utc.end_of_day.to_i.ms).ms_to_sec
 
     if params[:application]
       app = @user.applications.find(params[:application]) rescue nil
@@ -151,22 +152,25 @@ class App < Sinatra::Base
                                          joins: :samples,
                                     conditions: {"samples.stamp" => @from..@to},
                                          group: "applications.id",
-                                         limit: 20,
+                                         limit: 30,
                                          order: 'duration DESC')
     @ignored = @user.applications.ignored
 
     @stamps = Hash.new(0)
     person = 0.0
     robot = 0.0
+    @hours = Hash.new(0)
     @activity = 0
     Sample.find(:all,
              select: "samples.*, applications.productivity as ap",
               joins: :application,
          conditions: { application_id: @applications.map { |x| x.id }, stamp: @from..@to},
               order: :stamp).each do |s|
+
       robot += MAX_PRODUCTIVITY
       person += s.ap
       @stamps[s.stamp] += s.ap
+      @hours[ (s.stamp % 1.day) / 1.hour ] += s.ap
       @activity += s.seconds
     end
     @productivity = ((person/robot) * 100.0).round rescue 0.0
@@ -175,7 +179,7 @@ class App < Sinatra::Base
   end
 
   get '/generate/uid/' do
-    error 400 if throttle(request.ip)
+    error 400 if throttle(request.ip,MAX_REQUESTS_PER_DAY/10)
 
     u = User.new(uid: SecureRandom.hex(UID_LEN/2))
     u.save!
@@ -186,6 +190,7 @@ class App < Sinatra::Base
     redirect "https://github.com/sofialondonmoskva/keeper/"
   end
 end
+
 if ARGV[0] == 'db:migrate'
   class CreateTables < ActiveRecord::Migration
     def change

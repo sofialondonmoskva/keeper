@@ -32,15 +32,39 @@
 
         container = $('#chart_pie')
         chart = new google.visualization.PieChart(container.get(0));
-        chart.draw(data, {'width':container.width(),'height':280,'chartArea': {'width': '100%', 'height': '80%'}});
+        chart.draw(data, {'width':container.width(),'height':280,'chartArea': {'width': '80%', 'height': '80%'}});
 
         productivity = new google.visualization.DataTable();
         productivity.addColumn('datetime', 'Date');
         productivity.addColumn('number', 'Productivity');
         productivity.addRows(<%= @stamps.map { |k,v| ["new Date(#{k} * 1000 )",v.to_i]}.to_json.gsub(/"/,"")%>);
         container = $('#chart_line')
-        chart_p = new google.visualization.ComboChart(container.get(0));
-        chart_p.draw(productivity, {'width':container.width(),'height':400,legend: 'none',pointSize: 5, seriesType: "bars",'chartArea': {'width': '100%', 'height': '80%'}});
+        chart = new google.visualization.ColumnChart(container.get(0));
+        chart.draw(productivity,  {
+                                    width:container.width(),
+                                    height:400,
+                                    legend: 'none',
+                                    chartArea: {'width': '80%', 'height': '80%'}
+                                  });
+
+        productivity = new google.visualization.DataTable();
+
+        productivity.addColumn('number', 'Productivity');
+        productivity.addColumn('number', 'Hour');
+        productivity.addColumn('number', 'Hour');
+        offset = (new Date().getTimezoneOffset()) / 60 // i just love it when some things are in mili seconds, some in seconds and some in minutes
+        productivity.addRows(<%= @hours.sort.map { |k,v| ["#{k} - offset",v < 0 ? nil : v,v < 0 ? v : nil] }.to_json.gsub(/"/,"")%>);
+
+        container = $('#chart_hour')
+        chart = new google.visualization.ColumnChart(container.get(0));
+        chart.draw(productivity,  {
+                                    title: 'productivity per hour',
+                                    width:container.width(),
+                                    height:500,
+                                    legend: 'none',
+                                    chartArea: {'width': '80%', 'height': '80%'},
+                                    hAxis: { title: 'Hour',gridlines: {count: 12},format: '#'},
+                                  });
       }
 
       $(function() {
@@ -104,6 +128,7 @@
       <div class="span8">       
         <div id="chart_pie"></div>
         <div id="chart_line"></div>
+        <div id="chart_hour"></div>
       </div>
       <div class="span4">
         <table class="table table-striped table-condensed">
