@@ -6,9 +6,6 @@ static volatile int should_run = 0;
 @synthesize status_item,scripts,GIANT,queue,uid;
 
 #pragma mark SCRIPT
-- (NSString *) script_for_extracting_current_tab:(NSString *) s {
-    return [SCRIPT_GET_CURRENT_TAB stringByReplacingOccurrencesOfString:@"Safari" withString:s];
-}
 - (NSAppleScript * ) scriptify:(NSString *)s {
     return [[NSAppleScript alloc] initWithSource:s];
 }
@@ -217,8 +214,8 @@ static volatile int should_run = 0;
     self.GIANT = [[NSLock alloc] init];
     self.status_item = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     self.scripts = @{
-        @"safari" : [self scriptify:[self script_for_extracting_current_tab:@"Safari"]],
-        @"google chrome" : [self scriptify:[self script_for_extracting_current_tab:@"Google Chrome"]],
+        @"safari" : [self scriptify:SAFARI_GET_CURRENT_TAB],
+        @"google chrome" : [self scriptify:CHROME_GET_CURRENT_TAB],
     };
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

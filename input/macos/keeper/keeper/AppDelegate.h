@@ -12,8 +12,11 @@
 #define DO_NOT_START_AT_LOGIN_TEXT @"Do not start at login"
 #define PAUSE_TEXT @"Pause"
 #define START_TEXT @"Start"
-#define SCRIPT_GET_CURRENT_TAB @"tell application \"Safari\"\n\tset theURL to URL of current tab of window 1\nend tell"
+#define SAFARI_GET_CURRENT_TAB @"tell application \"Safari\"\n\tset theURL to URL of current tab of window 1\nend tell"
+#define CHROME_GET_CURRENT_TAB @"tell application \"Google Chrome\"\n\tget URL of active tab of first window\nend tell"
 
+// https://bugzilla.mozilla.org/show_bug.cgi?id=516502
+//#define FIREFOX_GET_CURRENT_TAB @"tell application \"Firefox\"\n\tset ff to properties of front window as list\n\tget item 7 of ff\nend tell"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     NSStatusItem *status_item;
