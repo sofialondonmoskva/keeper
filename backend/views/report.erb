@@ -129,7 +129,7 @@
           <div id="chart_hour"></div>
         </div>
         <div class="span5">
-          <table class="table table-striped table-condensed">
+          <table class="table table-striped">
             <% max = @applications.map { |x| x.duration}.max %>
             <% @applications.each do |a| %>
               <% percent = 100 - ((a.duration / max.to_f) * 100) %>
