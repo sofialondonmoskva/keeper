@@ -37,7 +37,7 @@
         productivity = new google.visualization.DataTable();
         productivity.addColumn('datetime', 'Date');
         productivity.addColumn('number', 'Productivity');
-        productivity.addRows(<%= @stamps.map { |k,v| ["new Date(#{k} * 1000 )",v.to_i]}.to_json.gsub(/"/,"")%>);
+        productivity.addRows(<%= @stamps.map { |k,v| ["new Date(#{k} * 1000 )",v.to_i]}.to_json.dequote%>);
         container = $('#chart_line')
         chart = new google.visualization.ColumnChart(container.get(0));
         chart.draw(productivity,  {
@@ -53,7 +53,7 @@
         productivity.addColumn('number', 'Hour');
         productivity.addColumn('number', 'Hour');
         offset = (new Date().getTimezoneOffset()) / 60 // i just love it when some things are in mili seconds, some in seconds and some in minutes
-        productivity.addRows(<%= @hours.sort.map { |k,v| ["#{k} - offset",v < 0 ? nil : v,v < 0 ? v : nil] }.to_json.gsub(/"/,"")%>);
+        productivity.addRows(<%= @hours.sort.map { |k,v| ["#{k} - offset",v < 0 ? nil : v,v < 0 ? v : nil] }.to_json.dequote%>);
 
         container = $('#chart_hour')
         chart = new google.visualization.ColumnChart(container.get(0));

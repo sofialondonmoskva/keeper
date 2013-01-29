@@ -11,8 +11,7 @@ CONFIG = File.join(ROOT,'config.rb')
 File.open(CONFIG,"w") { |f| f.write(%Q{ActiveRecord::Base.establish_connection(:adapter => 'sqlite3',:database => File.join(ROOT,"db.sqlite3"))\n}) } unless File.exists?(CONFIG)
 require File.join(ROOT,'config.rb')
 
-ActiveRecord::Base.logger = Logger.new STDOUT unless (ENV["RACK_ENV"] == "production")
-
+PRODUCTION = (ENV["RACK_ENV"] == "production")
 MAX_PRODUCTIVITY = 2
 MIN_PRODUCTIVITY = -3
 AGGREGATE = 300
@@ -20,6 +19,8 @@ UID_LEN = 128
 UID_RE = "[a-zA-Z0-9]{#{UID_LEN}}"
 MAX_REQUESTS_PER_DAY = 1000
 THROTTLE = {}
+
+ActiveRecord::Base.logger = Logger.new STDOUT unless PRODUCTION
 
 def humanize(secs)
   [[60, :s], [60, :m], [24, :h], [1000, :d]].inject([]){ |s, (count, name)|
@@ -50,6 +51,9 @@ end
 class String
   def escape
     CGI.escapeHTML(self)
+  end
+  def dequote
+    self.gsub(/['"]/,'')
   end
 end
 
@@ -88,9 +92,9 @@ end
 
 class App < Sinatra::Base
   set :sessions, false
-  set :logging, true
-  #set :dump_errors, false
-  #set :show_exceptions, false
+  set :logging, !PRODUCTION
+  set :dump_errors, false
+  set :show_exceptions, false
   set :static, false
 
   error 404 do
