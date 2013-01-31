@@ -171,8 +171,8 @@ class App < Sinatra::Base
          conditions: { application_id: @applications.map { |x| x.id }, stamp: @from..@to},
               order: :stamp).each do |s|
 
-      robot += MAX_PRODUCTIVITY
-      person += s.ap
+      robot += 1
+      person += (s.ap > 0 ? 1 : 0)
       @stamps[s.stamp] += s.ap
       @hours[ (s.stamp % 1.day) / 1.hour ] += s.ap
       @activity += s.seconds
