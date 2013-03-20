@@ -99,9 +99,16 @@
         <div class="navbar">
           <div class="navbar-inner">
             <div class="container-fluid">
-              <a class="brand" href="?"><%=@productivity.round%>% for <%=humanize(@activity)%> of activity</a>
+              <% 
+                activity_stamps = @stamps.keys
+
+                activity_start = Time.at(activity_stamps.first.to_i)
+                activity_end = Time.at(activity_stamps.last.to_i)
+                activity_days = ((activity_end - activity_start) / 1.day).to_f
+                sitting = ((@activity / 1.day) / activity_days ) * 100
+              %>
+              <a class="brand" href="?" style="font-size:14px"><%=@productivity.round%>% for <%=humanize(@activity)%> activity, <%=sitting.round%>% of your life between <%= activity_start.strftime "%Y/%-m/%-d"%> and <%= activity_end.strftime "%Y/%-m/%-d" %> (<%=activity_days.round%>d)</a>
               <ul class="nav pull-right">
-                <li class="divider-vertical"></li>
                 <% now = Time.now.utc %>
                 <li><a href="?from=<%=now.beginning_of_day.to_i.ms%>&to=<%=now.end_of_day.to_i.ms%>">today</a>
                 <li><a href="?from=<%=(now.beginning_of_day.to_i - 1.day).ms%>&to=<%=now.beginning_of_day.to_i.ms%>">yesterday</a></li>
