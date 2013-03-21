@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>&gt;productivity keeper&lt;</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/2.1.1/united/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/2.3.1/united/bootstrap.min.css">
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery.ui.all.css" />
     <style>
       .with-percent-background {
@@ -19,7 +19,7 @@
 
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
-
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load('visualization', '1.0', {'packages':['corechart']});
@@ -104,15 +104,27 @@
 
                 activity_start = Time.at(activity_stamps.first.to_i)
                 activity_end = Time.at(activity_stamps.last.to_i)
-                activity_days = ((activity_end - activity_start) / 1.day).to_f
-                sitting = ((@activity / 1.day) / activity_days ) * 100
+                activity_days = activity_end - activity_start
+                sitting = (@activity / activity_days) * 100
               %>
-              <a class="brand" href="?" style="font-size:14px"><%=@productivity.round%>% for <%=humanize(@activity)%> activity, <%=sitting.round%>% of your life between <%= activity_start.strftime "%Y/%-m/%-d"%> and <%= activity_end.strftime "%Y/%-m/%-d" %> (<%=activity_days.round%>d)</a>
+              <a class="brand" href="?" style="font-size:14px"><%=@productivity.round%>% for <%=humanize(@activity)%> activity
+                <% if activity_days > 1.day %>
+                - <%=sitting.round%>% of your life between <%= activity_start.strftime "%Y/%-m/%-d"%> and <%= activity_end.strftime "%Y/%-m/%-d" %> (<%=(activity_days / 1.day).round%>d)
+              <% end %>
+              </a>
               <ul class="nav pull-right">
                 <% now = Time.now.utc %>
                 <li><a href="?from=<%=now.beginning_of_day.to_i.ms%>&to=<%=now.end_of_day.to_i.ms%>">today</a>
                 <li><a href="?from=<%=(now.beginning_of_day.to_i - 1.day).ms%>&to=<%=now.beginning_of_day.to_i.ms%>">yesterday</a></li>
-                <li><a href="?from=1&to=<%=now.end_of_day.to_i.ms%>">forever</a></li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown"href="#">intervals<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="?from=<%=(now.beginning_of_week.to_i).ms%>&to=<%=now.end_of_day.to_i.ms%>">this week</a></li>
+                    <li><a href="?from=<%=(now.beginning_of_month.to_i).ms%>&to=<%=now.end_of_day.to_i.ms%>">this month</a></li>
+                    <li><a href="?from=<%=(now.beginning_of_year.to_i).ms%>&to=<%=now.end_of_day.to_i.ms%>">this year</a></li>
+                    <li><a href="?from=1&to=<%=now.end_of_day.to_i.ms%>">forever</a></li>
+                  </ul>
+                </li>
                 <li class="divider-vertical"></li>
                 <li>
                   <form class="navbar-form pull-right">
