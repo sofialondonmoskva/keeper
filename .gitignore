@@ -9,4 +9,5 @@ start.sh
 *.xcuserstate
 project.xcworkspace/
 xcuserdata/
-
+backend/tmp
+backend/log
