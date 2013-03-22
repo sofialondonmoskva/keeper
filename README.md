@@ -1,4 +1,4 @@
-# MOVING 
+# MOVING 22 of March 2013 - 13:27
 we are currently moving keeper.sofialondonmoskva.com to a new home, the macosx client buffers any data that is not successfully sent and it will try to send it until it succeeds, so please be patient
 
 expected downtime: 1-2 hours
