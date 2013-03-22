@@ -11,3 +11,5 @@ project.xcworkspace/
 xcuserdata/
 backend/tmp
 backend/log
+backend/cache
+
