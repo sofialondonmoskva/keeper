@@ -1,7 +1,7 @@
 # MOVING 22 of March 2013 - 13:27
 we are currently moving keeper.sofialondonmoskva.com to a new home, the macosx client buffers any data that is not successfully sent and it will try to send it until it succeeds, so please be patient
 
-expected downtime: 1-2 hours
+expected downtime: 1 hour (the zone's ttl)
 
 ## abstract
 keeper is an app that keeps track of which keeps track of which application is active. Every 300 seconds it sends the data to a server (by default https://keeper.sofialondonmoskva.com - it is defined in keepers/input/macos/keeper/AppDelegate.h). It is really helpful to know how you use your time but we couldn't trust the commercial productivity meters sooo.. here it is :) simple productivity meter in less then 600 lines of code
