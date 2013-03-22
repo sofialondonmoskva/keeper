@@ -216,6 +216,7 @@ static volatile int should_run = 0;
     self.scripts = @{
         @"safari" : [self scriptify:SAFARI_GET_CURRENT_TAB],
         @"google chrome" : [self scriptify:CHROME_GET_CURRENT_TAB],
+        @"terminal" : [self scriptify:TERMINAL_GET_PROCESS]
     };
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

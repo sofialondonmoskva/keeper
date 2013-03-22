@@ -14,6 +14,7 @@
 #define START_TEXT @"Start"
 #define SAFARI_GET_CURRENT_TAB @"tell application \"Safari\"\n\tset theURL to URL of current tab of window 1\nend tell"
 #define CHROME_GET_CURRENT_TAB @"tell application \"Google Chrome\"\n\tget URL of active tab of first window\nend tell"
+#define TERMINAL_GET_PROCESS @"tell application \"Terminal\"\n\tset currentTab to (selected tab of (get first window))\n\tset tabProcs to processes of currentTab\n\tset theProc to \"http://\" & (end of tabProcs)\nend tell"
 
 // https://bugzilla.mozilla.org/show_bug.cgi?id=516502
 //#define FIREFOX_GET_CURRENT_TAB @"tell application \"Firefox\"\n\tset ff to properties of front window as list\n\tget item 7 of ff\nend tell"
