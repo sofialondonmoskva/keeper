@@ -9,6 +9,17 @@ Every 2 seconds the app gets current active window, if it is safari/chrome it ge
 
 * MacOSX (>=1.6): download from [keeper-binary-macos-10.6.zip](https://github.com/sofialondonmoskva/keeper/raw/master/input/macos/keeper/keeper-binary-macos-10.6.zip) and just start it, or open input/macos/keeper/keeper.xcodeproj and compile it, click on the status icon (that looks like a K inside a clock) and select `Productivity report` and enjoy.
 
+* linux (proof of concept) (keeper/inmput/linux/keeper.sh)
+here is how it looks:
+
+```
+[jack@jazz linux]$ sh keeper.sh
+productivity report url: https://keeper.sofialondonmoskva.com/[your unique id, kept in keeper.uid after first start]/report/
+Thu 16 Jan 17:42:20 CET 2014 - curl -X POST -d '{"unknown":3"emacs":56}' https://keeper.sofialondonmoskva.com/[your unique id, kept in keeper.uid after first start]/input/1389890540
+...
+
+```
+
 ### report page
 
 the report page looks like this:
