@@ -7,17 +7,15 @@ URL=https://keeper.sofialondonmoskva.com
 declare -A DATA
 
 function send_data() {
-    json=()
+    json=""
     for app in "${!DATA[@]}"; do
         seconds="${DATA[$app]}"
-        json+="\"$app\":$seconds"
+        json="$json\"$app\":$seconds,"
         unset DATA["$app"]
     done
-    x=$(printf ",%s" "${json[@]}")
-    encoded="{${x:1}}"
-    args="-X POST -d '$encoded' $URL/$(cat $KEEPER_UID)/input/$(date +%s)"
-    echo "$(date) - curl $args"
-    (curl -q $args 2>/dev/null) &
+    encoded="{${json%?}}"
+    echo $encoded
+    curl --max-time $AGGREGATE -X POST -d "$encoded" $URL/$(cat $KEEPER_UID)/input/$(date +%s) 2>/dev/null &
 }
 
 test -f $KEEPER_UID || {
